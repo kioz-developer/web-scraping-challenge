@@ -12,8 +12,8 @@ def scrape(url):
     soup = BeautifulSoup(html, "html.parser")
     
     listings = {}
-    listings["headline"] = soup.find("div", class_="content_title").get_text()
-    listings["article"] = soup.find("div", class_="article_teaser_body").get_text()
+    listings["headline"] = soup.findAll("div", class_="content_title").get_text()
+    listings["article"] = soup.findAll("div", class_="article_teaser_body").get_text()
     
     # Quit the browser
     browser.quit()
