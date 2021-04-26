@@ -1,3 +1,4 @@
+from flask import current_app
 from flask import Blueprint
 from flask import jsonify
 from flask import request
@@ -7,6 +8,8 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
 from .scrape_mars import scrape
+from flask_pymongo import PyMongo
+from ..database import mongo
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
@@ -18,7 +21,10 @@ def index():
 @api.route('/scrape')
 @jwt_required()
 def call_scrape():
-    return scrape(), 200
+    mars_facts = mongo.db.mars_facts
+    data = scrape()
+    mars_facts.update({}, data, upsert=True)
+    return jsonify({'msg':"Scraped successful"}), 200
 
 # Route to authenticate users and return JWTs.
 @api.route("/login", methods=["POST"])
