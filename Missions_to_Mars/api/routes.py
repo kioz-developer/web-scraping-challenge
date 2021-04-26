@@ -6,12 +6,19 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
+from .scrape_mars import scrape
+
 api = Blueprint('api', __name__, url_prefix='/api')
 
 @api.route('/')
 @jwt_required()
 def index():
     return 'Api is running', 200
+
+@api.route('/scrape')
+@jwt_required()
+def call_scrape():
+    return scrape(), 200
 
 # Route to authenticate users and return JWTs.
 @api.route("/login", methods=["POST"])
