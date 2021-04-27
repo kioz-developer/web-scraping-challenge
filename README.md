@@ -7,7 +7,11 @@ This section contains screenshots of the final application.
 
 #### Api
 
+Login
+
 ![Login with postman](images/screenshots/login.jpg)
+
+Scrape
 
 ![Scrape with postman](images/screenshots/scrape.jpg)
 
