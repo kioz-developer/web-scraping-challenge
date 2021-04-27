@@ -9,10 +9,52 @@
 	<link rel="stylesheet" href="static/css/bootstrap.min.css">
 
     <link rel="icon" href="static/images/icon.jpg" type="image/jpg" />
+    <link rel="stylesheet" href="static/css/style.css">
 
     <title>Mars Facts</title>
 </head>
 <body>
-    <h3>Welcome to Mars Facts</h3>
+
+    <!-- Navigation menu -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Mars Facts</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="custom jumbotron">
+            <h3><strong>Latest Mars News</strong></h3>
+            <hr>
+            <p><strong>{{ data.title }}</strong></p>
+            <p>{{ data.paragraph }}</p>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ data.featured_image_url }}" width="100%" />
+                </div>
+                <div class="col-md-6 text-center">
+                    {{ data.facts_table|safe }}
+                </div>
+            </div>
+            <br>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h3><strong>Mars Hemispheres</strong></h3>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                {% for data_img in data.hemisphere_image_urls %}
+                <div class="card" style="width: 14rem;">
+                    <img class="card-img-top" src="{{ data_img.img_url }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data_img.title }}</h5>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>

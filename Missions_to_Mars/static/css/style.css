@@ -1,0 +1,10 @@
+.background-header {
+	background-color: black;
+	background-image: url(../images/header.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.custom {
+	padding:4rem 2rem;
+}
