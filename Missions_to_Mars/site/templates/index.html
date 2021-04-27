@@ -30,9 +30,15 @@
             <br>
             <div class="row">
                 <div class="col-md-6">
+                    <h3><strong>Featured Mars Image</strong></h3>
+                    <hr>
+                    <br>
                     <img src="{{ data.featured_image_url }}" width="100%" />
                 </div>
                 <div class="col-md-6 text-center">
+                    <h3><strong>Mars Facts</strong></h3>
+                    <hr>
+                    <br>
                     {{ data.facts_table|safe }}
                 </div>
             </div>
@@ -43,9 +49,9 @@
                     <hr>
                 </div>
             </div>
-            <div class="row">
+            <div class="row text-center">
                 {% for data_img in data.hemisphere_image_urls %}
-                <div class="card" style="width: 14rem;">
+                <div class="card" style="width: 15rem; margin-left: 12px;">
                     <img class="card-img-top" src="{{ data_img.img_url }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ data_img.title }}</h5>
